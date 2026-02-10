@@ -1,0 +1,598 @@
+{
+  "teams": [
+    {
+      "id": 0,
+      "name": "Atlético Capital",
+      "home_stadium_id": 0
+    },
+    {
+      "id": 1,
+      "name": "Centuria FC",
+      "home_stadium_id": 1
+    },
+    {
+      "id": 2,
+      "name": "Monumental Buenos Aires",
+      "home_stadium_id": 2
+    },
+    {
+      "id": 3,
+      "name": "Águilas Aztecas",
+      "home_stadium_id": 3
+    },
+    {
+      "id": 4,
+      "name": "Carioca Stars",
+      "home_stadium_id": 4
+    },
+    {
+      "id": 5,
+      "name": "Nou Catalans",
+      "home_stadium_id": 5
+    },
+    {
+      "id": 6,
+      "name": "Red Warriors",
+      "home_stadium_id": 6
+    },
+    {
+      "id": 7,
+      "name": "Allianz Baviera",
+      "home_stadium_id": 7
+    },
+    {
+      "id": 8,
+      "name": "AC Milano",
+      "home_stadium_id": 8
+    },
+    {
+      "id": 9,
+      "name": "Vikingos Blancos",
+      "home_stadium_id": 9
+    }
+  ],
+  "stadiums": [
+    {
+      "id": 0,
+      "name": "Estadio Nacional",
+      "max_teams": 3,
+      "required_resources": [
+        [
+          "Árbitro",
+          1
+        ],
+        [
+          "Médico",
+          1
+        ],
+        [
+          "Seguridad",
+          1
+        ],
+        [
+          "Cámaras TV",
+          1
+        ],
+        [
+          "Ambulancia",
+          1
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Estadio Centenario",
+      "max_teams": 2,
+      "required_resources": [
+        [
+          "Árbitro",
+          1
+        ],
+        [
+          "Médico",
+          1
+        ],
+        [
+          "Seguridad",
+          1
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Estadio Monumental",
+      "max_teams": 4,
+      "required_resources": [
+        [
+          "Árbitro",
+          1
+        ],
+        [
+          "Médico",
+          1
+        ],
+        [
+          "Seguridad",
+          1
+        ],
+        [
+          "Cámaras TV",
+          1
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Estadio Azteca",
+      "max_teams": 2,
+      "required_resources": [
+        [
+          "Árbitro",
+          1
+        ],
+        [
+          "Médico",
+          1
+        ],
+        [
+          "Seguridad",
+          1
+        ],
+        [
+          "Ambulancia",
+          1
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Estadio Maracaná",
+      "max_teams": 3,
+      "required_resources": [
+        [
+          "Árbitro",
+          1
+        ],
+        [
+          "Médico",
+          1
+        ],
+        [
+          "Seguridad",
+          1
+        ],
+        [
+          "Cámaras TV",
+          1
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Estadio Camp Nou",
+      "max_teams": 2,
+      "required_resources": [
+        [
+          "Árbitro",
+          1
+        ],
+        [
+          "Médico",
+          1
+        ],
+        [
+          "Seguridad",
+          1
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Estadio Old Trafford",
+      "max_teams": 3,
+      "required_resources": [
+        [
+          "Árbitro",
+          1
+        ],
+        [
+          "Médico",
+          1
+        ],
+        [
+          "Seguridad",
+          1
+        ],
+        [
+          "Cámaras TV",
+          1
+        ],
+        [
+          "Ambulancia",
+          1
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Estadio Allianz Arena",
+      "max_teams": 5,
+      "required_resources": [
+        [
+          "Árbitro",
+          1
+        ],
+        [
+          "Médico",
+          1
+        ],
+        [
+          "Seguridad",
+          1
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Estadio San Siro",
+      "max_teams": 2,
+      "required_resources": [
+        [
+          "Árbitro",
+          1
+        ],
+        [
+          "Médico",
+          1
+        ],
+        [
+          "Seguridad",
+          1
+        ],
+        [
+          "Cámaras TV",
+          1
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Estadio Bernabéu",
+      "max_teams": 3,
+      "required_resources": [
+        [
+          "Árbitro",
+          1
+        ],
+        [
+          "Médico",
+          1
+        ],
+        [
+          "Seguridad",
+          1
+        ],
+        [
+          "Ambulancia",
+          1
+        ]
+      ]
+    }
+  ],
+  "schedule": {
+    "01/01/2024": [
+      {
+        "name": "Viaje Vikingos Blancos a Estadio San Siro del 01/01/2024",
+        "task_type": "viaje",
+        "date": {
+          "day": 1,
+          "month": 1,
+          "year": 2024
+        },
+        "resources": [
+          [
+            "Autobús",
+            1
+          ],
+          [
+            "Avión",
+            1
+          ]
+        ],
+        "team_id": 9,
+        "from_stadium_id": 9,
+        "to_stadium_id": 8,
+        "distance_km": 450
+      }
+    ]
+  },
+  "resources": [
+    {
+      "name": "Avión",
+      "type": "vehículo",
+      "total_quantity": 1,
+      "reach": 500
+    },
+    {
+      "name": "Autobús",
+      "type": "vehículo",
+      "total_quantity": 3,
+      "reach": 250
+    },
+    {
+      "name": "Van",
+      "type": "vehículo",
+      "total_quantity": 5,
+      "reach": 100
+    },
+    {
+      "name": "Ambulancia",
+      "type": "instrumento_personal",
+      "total_quantity": 1
+    },
+    {
+      "name": "Árbitro",
+      "type": "instrumento_personal",
+      "total_quantity": 3
+    },
+    {
+      "name": "Médico",
+      "type": "instrumento_personal",
+      "total_quantity": 3
+    },
+    {
+      "name": "Seguridad",
+      "type": "instrumento_personal",
+      "total_quantity": 3
+    },
+    {
+      "name": "Cámaras TV",
+      "type": "instrumento_personal",
+      "total_quantity": 2
+    }
+  ],
+  "played_against": [
+    [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  ],
+  "distance_matrix": [
+    [
+      0,
+      150,
+      300,
+      450,
+      200,
+      350,
+      400,
+      250,
+      500,
+      100
+    ],
+    [
+      150,
+      0,
+      200,
+      350,
+      100,
+      250,
+      300,
+      150,
+      400,
+      50
+    ],
+    [
+      300,
+      200,
+      0,
+      150,
+      250,
+      100,
+      150,
+      200,
+      250,
+      200
+    ],
+    [
+      450,
+      350,
+      150,
+      0,
+      400,
+      250,
+      300,
+      350,
+      100,
+      350
+    ],
+    [
+      200,
+      100,
+      250,
+      400,
+      0,
+      150,
+      200,
+      50,
+      300,
+      150
+    ],
+    [
+      350,
+      250,
+      100,
+      250,
+      150,
+      0,
+      50,
+      100,
+      200,
+      250
+    ],
+    [
+      400,
+      300,
+      150,
+      300,
+      200,
+      50,
+      0,
+      150,
+      250,
+      300
+    ],
+    [
+      250,
+      150,
+      200,
+      350,
+      50,
+      100,
+      150,
+      0,
+      400,
+      200
+    ],
+    [
+      500,
+      400,
+      250,
+      100,
+      300,
+      200,
+      250,
+      400,
+      0,
+      450
+    ],
+    [
+      100,
+      50,
+      200,
+      350,
+      150,
+      250,
+      300,
+      200,
+      450,
+      0
+    ]
+  ]
+}
