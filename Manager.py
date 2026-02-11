@@ -248,7 +248,7 @@ class LeagueManager:
                 break
         return quantity
 
-
+    #Retorna true si la fecha 1 es más vieja o igual que la fecha 2
     def _is_newer_day(self, date1: Time, date2: Time) -> bool:
         if date1.year > date2.year: return True
 
@@ -267,7 +267,22 @@ class LeagueManager:
         day1 = sum(days_month[:date1.month-1]) + date1.day
         day2 = sum(days_month[:date2.month-1]) + date2.day
         return abs(day2 - day1)
+    
+    def _search_older_tasks(self, date: Time, team_id: int):
+        list_older_tasks = []
 
+        for date_task_str, tasks in self.schedule.items():
+            date_task = self._str_to_time(date_task_str)
+            if self._is_newer_day(date, date_task): continue
+
+            for task in tasks:
+                if task.task_type == "partido" and (team_id == task.team1_id or team_id == task.team2_id):
+                    list_older_tasks.append(task)
+
+                elif task.task_type == "viaje" and team_id == task.team_id:
+                    list_older_tasks.append(task)
+        
+        return list_older_tasks
 
     def _save_match(self, date: Time, local_id: int, visitor_id: int, resources: list[(str, int)])-> Match:
         team1 = self.teams[local_id]
@@ -372,6 +387,12 @@ class LeagueManager:
         resources_requiere: list[(str, int)] = []
         if not self._can_allot_vehicle(date, distance, resources_requiere):
             return {"success": False, "message": f"No hay transportes suficientes para recorrer {distance}km para la fecha: {date.__str__()}"}
+        
+        #5. Determinar si existen afectaciones al calendario en las tareas ya planificadas
+        list_older_tasks = self._search_older_tasks(date, team_id)
+        if list_older_tasks:
+            return {"success": False, "message"
+                    : f"No se puede agregar la tarea en esta fecha porque existen {len(list_older_tasks)} tarea/s planificada/s en fechas posteriores que se ven afectadas"}
         
         travel = self._save_travel(date, team_id, current_stadium_id, to_stadium_id, distance, resources_requiere)
         
