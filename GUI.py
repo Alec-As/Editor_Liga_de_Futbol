@@ -305,14 +305,14 @@ Seleccione una opción del menú lateral para comenzar."""
                 fecha = Time(dia, mes)
                 
                 # Crear partido
-                resultado = manager.create_travel(equipo_id, stadium_id, fecha)
+                result = manager.create_travel(equipo_id, stadium_id, fecha)
                 
-                if resultado["success"]:
-                    messagebox.showinfo("Éxito", resultado["message"])
+                if result["success"]:
+                    messagebox.showinfo("Éxito", result["message"])
                     self.list_all_task()
                     dialog.destroy()
                 else:
-                    messagebox.showerror("Error", resultado["message"])
+                    messagebox.showerror("Error", result["message"])
                     
             except (ValueError, IndexError):
                 messagebox.showerror("Error", "Por favor complete todos los campos correctamente")
@@ -360,11 +360,14 @@ Seleccione una opción del menú lateral para comenzar."""
             if selection_index:
                 index = selection_index[0]
 
-                manager.delete_task(index)
+                result = manager.delete_task(index)
 
-                messagebox.showinfo("Éxito", "Tarea eliminada exitosamente")
-                self.list_all_task()
-                dialog.destroy()
+                if result["success"]:
+                    messagebox.showinfo("Éxito", result["message"])
+                    self.list_all_task()
+                    dialog.destroy()
+                else:
+                    messagebox.showerror("Error", result["message"])
             else:
                 messagebox.showwarning("Advertencia", "Seleccione una tarea primero")
         

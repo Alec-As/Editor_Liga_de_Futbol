@@ -415,37 +415,36 @@ class LeagueManager:
         if 0 <= index < len(all_tasks):
             return all_tasks[index]
         return None
-    
-    def delete_task(self, index: int):
-        try:
-            all_tasks = self.list_all_tasks()
 
-            if 0 <= index < len(all_tasks):
-                task_to_delete = all_tasks[index]
+    def delete_task(self, index: int) -> dict:
+        all_tasks = self.list_all_tasks()
+        task_to_delete = all_tasks[index]
 
-                task_team = task_to_delete.get_principal_team()
+        task_team = task_to_delete.get_principal_team()
+        task_date = task_to_delete.date
+        task_date_str = task_date.__str__()
 
-                task_date = task_to_delete.date.__str__()
-                if task_date not in self.schedule: return False
-                found = False
+        # 1. Problema al encontrar la fecha en calendario
+        if task_date_str not in self.schedule: return {"success": False, "message": f"Error en la fecha solicitada, no se pudo encontrar {task_date_str}"}
 
-                tasks_for_date = self.schedule[task_date]
+        # 2. Comprobar si existen incoherencias en el calendario al eliminar la tarea
+        list_older_tasks = self._search_older_tasks(task_date, task_team)
+        if task_to_delete.task_type == "viaje" and list_older_tasks:
+            return {"success": False, "message"
+                    : f"No se puede eliminar la tarea en esta fecha porque existen {len(list_older_tasks)} tarea/s planificada/s en fechas posteriores que se ven afectadas"}
 
-                for task in tasks_for_date:
-                    if task_team == task_to_delete.get_principal_team():
-                        tasks_for_date.remove(task)
-                        found = True
+        tasks_for_date = self.schedule[task_date_str]
 
-                        if task.task_type == "partido":
-                            self.played_against[task.team1_id][task.team2_id] = False
-                        break
-                if found and not tasks_for_date:
-                    del self.schedule[task_date]
-                return found
-
-            return False
-        except (IndexError, KeyError, ValueError):
-            return False
+        # Buscar tarea a partir del equipo, teniendo en cuenta que un equipo no puede participar en dos tareas en un mismo día
+        for task in tasks_for_date:
+            if task_team == task_to_delete.get_principal_team():
+                tasks_for_date.remove(task)
+                if task.task_type == "partido":
+                    self.played_against[task.team1_id][task.team2_id] = False
+                if not tasks_for_date:
+                    del self.schedule[task_date_str]
+                return {"success": True, "message": f"Tarea eliminada exitosamente"}
+        return {"success": False, "message": f"No se pudo encontrar la tarea en la fecha especificada"}
     
     def save_state(self, filename: str = "league_state.json"):
         state = {
