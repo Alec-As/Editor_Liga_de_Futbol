@@ -114,6 +114,31 @@ Este sistema permite gestionar una liga de fútbol con:
     1. PARTIDOS (entre dos equipos en un estadio)
     2. VIAJES (traslado de equipos entre estadios)
 
+Se deben cumplir además los siguientes requisitos para registrar cualquier tarea en el sistema:
+
+• EXISTEN SUFICIENTES RECURSOS EL DÍA ESPECIFICADO PARA LA TAREA ESPECIFICADA:
+    1. Los partidos consumen los recursos solicitados por los estadios, los estadios tienen un conjunto de recursos por defecto
+    2. Los viajes consumen vehículos en función de la distancia entre estadios(estadio actual -> estadio de llegada)
+    3. Los recursos se asignan de forma inteligente y se liberan en cualquier otro día
+• CUMPLIMIENTO DEL PLAN DE DESCANSOS:
+    1. Después de cada partido los equipos tienen derecho a un descanso de 3 días sin partidos y 1 día sin viajes
+    2. Después de cada viaje los equipos tienen derecho a un descanso de 1 día sin partidos y 1 día sin viajes
+• CAPACIDAD DE ALOJAMIENTO DE LOS ESTADIOS:
+    1. Los estadios tienen por defecto una capacidad máxima de equipos que en un mismo momento puden encontarse alojados
+• CUMPLIMIENTO DE LAS REGLAS DE LA LIGA:
+    1. Solo dos equipos alojados al mismo tiempo en un mismo estadio pueden jugar un partido
+    2. El equipo local debe ser aquel que juege en estadio propio
+    3. Dos equipos solo pueden jugar dos veces, y al menos una vez cada equipo de haber jugado de local
+
+─────────────────────────────────────────────────────
+➕ RECURSOS DISPONIBLES:
+─────────────────────────────────────────────────────"""
+        
+        for i, resource in enumerate(manager.resources):
+            contenido += f"\n{i}. {resource.__str__()}"
+        
+        contenido += """
+
 ─────────────────────────────────────────────────────
 🏆 EQUIPOS DISPONIBLES:
 ─────────────────────────────────────────────────────"""
@@ -141,7 +166,7 @@ Este sistema permite gestionar una liga de fútbol con:
 1. Use 'Listar Tareas' para ver todas las tareas planificadas
 2. Use 'Agregar Partido' para programar un nuevo partido
 3. Use 'Agregar Viaje' para planificar el traslado de un equipo
-4. Use 'Estado Actual' para ver la situación actual de la liga
+4. Use 'Información' para ver de nuevo este mensaje
 
 Seleccione una opción del menú lateral para comenzar."""
         
